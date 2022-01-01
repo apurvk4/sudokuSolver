@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sudoku Solver</title>
+
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="/src/css/style.css" />
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <a href="#home">Sudoku Solver</a>
+      <a href="#news">Clear Sudoku</a>
+      <a href="#contact">generate partially filled sudoku</a>
+      <a href="#about">solve</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"
+        >&#9776;</a
+      >
+    </div>
+    <div class="container">
+      <table id="grid">
+        <tr>
+          <td><button id="cell-0" type="button" disabled>3</button></td>
+          <td><button id="cell-1" type="button"></button></td>
+          <td><button id="cell-2" type="button" disabled>6</button></td>
+
+          <td><button id="cell-3" type="button" disabled>5</button></td>
+          <td><button id="cell-4" type="button"></button></td>
+          <td><button id="cell-5" type="button" disabled>8</button></td>
+
+          <td><button id="cell-6" type="button" disabled>4</button></td>
+          <td><button id="cell-7" type="button"></button></td>
+          <td><button id="cell-8" type="button"></button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-9" type="button" disabled>5</button></td>
+          <td><button id="cell-10" type="button" disabled>2</button></td>
+          <td><button id="cell-11" type="button"></button></td>
+
+          <td><button id="cell-12" type="button"></button></td>
+          <td><button id="cell-13" type="button"></button></td>
+          <td><button id="cell-14" type="button"></button></td>
+
+          <td><button id="cell-15" type="button"></button></td>
+          <td><button id="cell-16" type="button"></button></td>
+          <td><button id="cell-17" type="button"></button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-18" type="button"></button></td>
+          <td><button id="cell-19" type="button" disabled>8</button></td>
+          <td><button id="cell-20" type="button" disabled>7</button></td>
+
+          <td><button id="cell-21" type="button"></button></td>
+          <td><button id="cell-22" type="button"></button></td>
+          <td><button id="cell-23" type="button"></button></td>
+
+          <td><button id="cell-24" type="button"></button></td>
+          <td><button id="cell-25" type="button" disabled>3</button></td>
+          <td><button id="cell-26" type="button" disabled>1</button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-27" type="button"></button></td>
+          <td><button id="cell-28" type="button"></button></td>
+          <td><button id="cell-29" type="button" disabled>3</button></td>
+
+          <td><button id="cell-30" type="button"></button></td>
+          <td><button id="cell-31" type="button" disabled>1</button></td>
+          <td><button id="cell-32" type="button"></button></td>
+
+          <td><button id="cell-33" type="button"></button></td>
+          <td><button id="cell-34" type="button" disabled>8</button></td>
+          <td><button id="cell-35" type="button"></button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-36" type="button" disabled>9</button></td>
+          <td><button id="cell-37" type="button"></button></td>
+          <td><button id="cell-38" type="button"></button></td>
+
+          <td><button id="cell-39" type="button" disabled>8</button></td>
+          <td><button id="cell-40" type="button" disabled>6</button></td>
+          <td><button id="cell-41" type="button" disabled>3</button></td>
+
+          <td><button id="cell-42" type="button"></button></td>
+          <td><button id="cell-43" type="button"></button></td>
+          <td><button id="cell-44" type="button" disabled>5</button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-45" type="button"></button></td>
+          <td><button id="cell-46" type="button" disabled>5</button></td>
+          <td><button id="cell-47" type="button"></button></td>
+
+          <td><button id="cell-48" type="button"></button></td>
+          <td><button id="cell-49" type="button" disabled>9</button></td>
+          <td><button id="cell-50" type="button"></button></td>
+
+          <td><button id="cell-51" type="button" disabled>6</button></td>
+          <td><button id="cell-52" type="button"></button></td>
+          <td><button id="cell-53" type="button"></button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-54" type="button" disabled>1</button></td>
+          <td><button id="cell-55" type="button" disabled>3</button></td>
+          <td><button id="cell-56" type="button"></button></td>
+
+          <td><button id="cell-57" type="button"></button></td>
+          <td><button id="cell-58" type="button"></button></td>
+          <td><button id="cell-59" type="button"></button></td>
+
+          <td><button id="cell-60" type="button" disabled>2</button></td>
+          <td><button id="cell-61" type="button" disabled>5</button></td>
+          <td><button id="cell-62" type="button"></button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-63" type="button"></button></td>
+          <td><button id="cell-64" type="button"></button></td>
+          <td><button id="cell-65" type="button"></button></td>
+
+          <td><button id="cell-66" type="button"></button></td>
+          <td><button id="cell-67" type="button"></button></td>
+          <td><button id="cell-68" type="button"></button></td>
+
+          <td><button id="cell-69" type="button"></button></td>
+          <td><button id="cell-70" type="button" disabled>7</button></td>
+          <td><button id="cell-71" type="button" disabled>4</button></td>
+        </tr>
+
+        <tr>
+          <td><button id="cell-72" type="button"></button></td>
+          <td><button id="cell-73" type="button"></button></td>
+          <td><button id="cell-74" type="button" disabled>5</button></td>
+
+          <td><button id="cell-75" type="button" disabled>2</button></td>
+          <td><button id="cell-76" type="button"></button></td>
+          <td><button id="cell-77" type="button" disabled>6</button></td>
+
+          <td><button id="cell-78" type="button" disabled>3</button></td>
+          <td><button id="cell-79" type="button"></button></td>
+          <td><button id="cell-80" type="button"></button></td>
+        </tr>
+      </table>
+    </div>
+    <button onclick="clearAll()">clear</button>
+    <script src="solver.js" />
+  </body>
+</html>

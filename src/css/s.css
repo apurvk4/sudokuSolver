@@ -1,0 +1,100 @@
+:root {
+    font-size: 7px;
+  }
+  
+  body {
+    height: 100vh;
+    width: 100vw;
+    min-height: 90rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url(/src/Images/grid.png) repeat;
+  }
+  
+  input, label {
+    user-select: none;
+  }
+  
+  input {
+    display: none;
+  }
+  
+  .mode-switch {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  input#pen:checked ~ .mode-switch label[for=pen] {
+    display: none;
+  }
+  input#pencil:checked ~ .mode-switch label[for=pencil] {
+    display: none;
+  }
+  
+  .sudoku {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 81rem;
+    height: 81rem;
+    outline: 2px solid rgb(114, 69, 69);
+  }
+  .sudoku .section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 27rem;
+    height: 27rem;
+    outline: 3px solid rgb(172, 55, 55);
+  }
+  .sudoku .section .cell {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 9rem;
+    height: 9rem;
+    outline: 1px solid rgb(192, 49, 49);
+  }
+  .sudoku .section .cell:nth-child(3n+3) {
+    border-right: none;
+  }
+  .sudoku .section .cell:nth-child(n+7) {
+    border-bottom: none;
+  }
+  .sudoku .section .cell div.answer {
+    display: block;
+    text-align: center;
+    width: 9rem;
+    height: 9rem;
+    font-size: 6rem;
+    line-height: 9rem;
+  }
+  .sudoku .section .cell label {
+    display: none;
+    opacity: 0;
+    font-size: 2rem;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+  }
+  .sudoku .section .cell label.pencil {
+    color: #666;
+  }
+  .sudoku .section .cell label.pen {
+    color: #00255c;
+    margin-left: -3rem;
+  }
+  .sudoku .section .cell label.unset {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
