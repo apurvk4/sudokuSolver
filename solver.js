@@ -1,4 +1,15 @@
 let currentCell = null;
+let sudoku = [
+  [3, 0, 6, 5, 0, 8, 4, 0, 0],
+  [5, 2, 0, 0, 0, 0, 0, 0, 0],
+  [0, 8, 7, 0, 0, 0, 0, 3, 1],
+  [0, 0, 3, 0, 1, 0, 0, 8, 0],
+  [9, 0, 0, 8, 6, 3, 0, 0, 5],
+  [0, 5, 0, 0, 9, 0, 6, 0, 0],
+  [1, 3, 0, 0, 0, 0, 2, 5, 0],
+  [0, 0, 0, 0, 0, 0, 0, 7, 4],
+  [0, 0, 5, 2, 0, 6, 3, 0, 0],
+];
 window.addEventListener("DOMContentLoaded", (event) => {
   document.querySelectorAll("#grid td button").forEach((cell) =>
     cell.addEventListener("click", function (e) {
@@ -47,12 +58,35 @@ function myFunction() {
   }
 }
 function clearAll() {
+  let cellList = document.querySelectorAll("#grid td button");
+  cellList.forEach((cell) => {
+    cell.innerHTML = "";
+    cell.removeAttribute("disabled");
+  });
+}
+function fill() {
+  let i = 0;
+  let cellList = document.querySelectorAll("#grid td button");
+  for (let k = 0; k < sudoku.length; k++) {
+    for (let j = 0; j < sudoku[k].length; j++) {
+      if (sudoku[k][j] != 0) {
+        cellList[i].innerHTML = sudoku[k][j].toString();
+        cellList[i].setAttribute("disabled", "true");
+      } else {
+        cellList[i].innerHTML = "";
+        if (cellList[i].hasAttribute("disabled")) {
+          cellList[i].removeAttribute("disabled");
+        }
+      }
+      i++;
+    }
+  }
+}
+function solve() {
   let grid = new Array(9);
   let i = 0;
   let cellList = document.querySelectorAll("#grid td button");
   cellList.forEach((cell) => {
-    // cell.innerHTML = "";
-    // cell.removeAttribute("disabled");
     if (grid[i] && grid[i].length < 9) {
       grid[i].push(+cell.innerText[0] || 0);
     } else if (grid[i] && grid[i].length == 9) {
