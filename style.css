@@ -1,6 +1,6 @@
 html,
 body {
-  background: url(/src/Images/grid1.png) repeat;
+  background: url(/grid1.png) repeat;
   width: 100vw;
   height: 100vh;
 }
